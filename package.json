@@ -2,8 +2,9 @@
     "name": "ea4code",
     "displayName": "EA4Code",
     "description": "Event Assembler Syntax Highlighting for VS Code",
-    "version": "1.0",
+    "version": "1.0.0",
     "publisher": "StanH",
+    "repository": "https://github.com/StanHash/ea4code",
     "engines": {
         "vscode": "^1.25.0"
     },
