@@ -16,21 +16,6 @@
 				}, {
 					"include": "#strings"
 				}, {
-					"include": "#directives"
-				}, {
-					"include": "#lang-elements"
-				}
-			]
-		},
-		"in-directive": {
-			"patterns": [
-				{
-					"include": "#keywords"
-				}, {
-					"include": "#comments"
-				}, {
-					"include": "#strings"
-				}, {
 					"include": "#lang-elements"
 				}
 			]
@@ -80,27 +65,20 @@
 				}
 			]
 		},
-		"directives": {
-			"name": "meta.preprocessor.eventassembler",
-			"begin": "\\#(include|define|ifdef|ifndef|else|endif|easteregg)",
-			"end": "\\n",
-			"patterns": [
-				{
-					"include": "#in-directive"
-				}
-			]
-		},
 		"lang-elements": {
 			"patterns": [
 				{
+					"name": "constant.numeric.eventassembler",
+					"match": "((0x|\\$)?[0-9A-Fa-f]+b?)\\b"
+				}, {
 					"name": "entity.name.eventassembler",
 					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
 				}, {
-					"name": "constant.numeric.eventassembler",
-					"match": "\\b((0x|\\$)?[0-9A-Fa-f]+b?)\\b"
-				}, {
 					"name": "keyword.operator.eventassembler",
-					"match": "(\\+|\\-|\\*|\\/|\\%|\\&|\\||\\^|\\<\\<|\\>\\>|\\>\\>\\>)"
+					"match": "(\\+|\\-|\\*|\\/|\\%|\\&|\\||\\^|\\<\\<|\\>\\>|\\>\\>\\>|\\;|\\,|\\:)"
+				}, {
+					"name": "meta.preprocessor.eventassembler",
+					"match": "\\#(include|define|ifdef|ifndef|else|endif|easteregg)\\b"
 				}
 			]
 		}
