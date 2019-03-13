@@ -1,0 +1,26 @@
+{
+    "name": "ea4code",
+    "displayName": "EA4Code",
+    "description": "Event Assembler Syntax Highlighting for VS Code",
+    "version": "1.0",
+    "publisher": "StanH",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "eventassembler",
+            "aliases": ["Event Assembler", "EA"],
+            "extensions": [".event", ".ea"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "eventassembler",
+            "scopeName": "source.eventassembler",
+            "path": "./syntaxes/eventassembler.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,109 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Event Assembler",
+	"patterns": [
+		{
+			"include": "#main"
+		}
+	],
+	"repository": {
+		"main": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				}, {
+					"include": "#comments"
+				}, {
+					"include": "#strings"
+				}, {
+					"include": "#directives"
+				}, {
+					"include": "#lang-elements"
+				}
+			]
+		},
+		"in-directive": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				}, {
+					"include": "#comments"
+				}, {
+					"include": "#strings"
+				}, {
+					"include": "#lang-elements"
+				}
+			]
+		},
+		"in-strings": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				}, {
+					"include": "#comments"
+				}, {
+					"include": "#lang-elements"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.eventassembler",
+				"match": "\\b(ORG|ALIGN|PUSH|POP|ERROR|WARNING|MESSAGE|CURRENTOFFSET|ASSERT|PROTECT)\\b"
+			}]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.eventassembler",
+					"begin": "\\/\\*",
+					"end": "\\*\\/",
+					"patterns": [
+						{
+							"include": "#comments"
+						}
+					]
+				}, {
+					"name": "comment.line.eventassembler",
+					"begin": "\\/\\/",
+					"end": "\\n"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.eventassembler",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"include": "#in-strings"
+				}
+			]
+		},
+		"directives": {
+			"name": "meta.preprocessor.eventassembler",
+			"begin": "\\#(include|define|ifdef|ifndef|else|endif|easteregg)",
+			"end": "\\n",
+			"patterns": [
+				{
+					"include": "#in-directive"
+				}
+			]
+		},
+		"lang-elements": {
+			"patterns": [
+				{
+					"name": "entity.name.eventassembler",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+				}, {
+					"name": "constant.numeric.eventassembler",
+					"match": "\\b((0x|\\$)?[0-9A-Fa-f]+b?)\\b"
+				}, {
+					"name": "keyword.operator.eventassembler",
+					"match": "(\\+|\\-|\\*|\\/|\\%|\\&|\\||\\^|\\<\\<|\\>\\>|\\>\\>\\>)"
+				}
+			]
+		}
+	},
+	"scopeName": "source.eventassembler"
+}
